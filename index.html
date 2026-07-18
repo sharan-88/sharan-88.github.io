@@ -502,8 +502,9 @@ nav {
 #projects { padding: 60px 88px 80px 96px; }
 
 .projects-journal {
-  columns: 2 350px;
-  column-gap: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
 }
 
 .proj-sketch-card {
@@ -512,53 +513,10 @@ nav {
   padding: 28px;
   position: relative;
   transition: transform 0.25s ease;
-  overflow: visible;
-}
-
-.proj-sketch-card:hover {
-  transform: translateY(-4px) rotate(0.3deg);
-}
-
-/* Sketch outline */
-.proj-sketch-card::before {
-  content: '';
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  border: 2px solid rgba(28,24,18,0.55);
-  transform: rotate(-0.5deg);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.proj-sketch-card.featured {
-  grid-column: span 2;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-}
-
-.proj-sketch-card > * {
-  position: relative;
-  z-index: 2;
-} 
-
-/* corner dog-ear */
-.proj-sketch-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 24px;
-  height: 24px;
-  background: linear-gradient(225deg, var(--paper3) 50%, transparent 50%);
-  border-top: 1px solid rgba(28,24,18,0.18);
-  border-left: 1px solid rgba(28,24,18,0.18);
 }
 .proj-sketch-card:hover { transform: translateY(-4px) rotate(0.3deg); }
 .proj-sketch-card.featured {
+  grid-column: span 2;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
@@ -926,14 +884,14 @@ footer {
     <p class="hero-desc">
       Building scalable backend systems &amp; AI-powered applications.<br>
       Django · Spring Boot · FastAPI · AWS · LangChain.<br>
-      Final-year CS student. SGPA 9.16.
+      Final-year CS student. CGPA 8.9. Open source contributor.
     </p>
 
     <div class="hero-annotations">
       <span class="annotation-chip"><span class="chip-dot" style="background:#2040A0;"></span>Ex-Infosys Intern</span>
-      <span class="annotation-chip"><span class="chip-dot" style="background:#B03020;"></span>150-day streak × 2</span>
-      <span class="annotation-chip"><span class="chip-dot" style="background:#3D7A3A;"></span>SGPA 9.16</span>
-      <span class="annotation-chip"><span class="chip-dot" style="background:#8B5E00;"></span>5+ Projects</span>
+      <span class="annotation-chip"><span class="chip-dot" style="background:#3D7A3A;"></span>Open Source Contributor</span>
+      <span class="annotation-chip"><span class="chip-dot" style="background:#B03020;"></span>SGPA 9.16</span>
+      <span class="annotation-chip"><span class="chip-dot" style="background:#8B5E00;"></span>SIH 2025</span>
     </div>
 
     <div class="hero-ctas">
@@ -967,14 +925,14 @@ footer {
       <div class="stat-row">
         <div class="stat-item">
           <div>
-            <div class="stat-big">9<span class="stat-unit">.</span>16</div>
-            <div class="stat-desc">SGPA / 10.0<br><span style="font-size:11px; color:var(--ink4);">Sahyadri College, CSE</span></div>
+            <div class="stat-big">8<span class="stat-unit">.</span>9</div>
+            <div class="stat-desc">CGPA / 10.0<br><span style="font-size:11px; color:var(--ink4);">Sahyadri College, CSE</span></div>
           </div>
         </div>
         <div class="stat-item">
           <div>
-            <div class="stat-big">150<span class="stat-unit">d</span></div>
-            <div class="stat-desc">LeetCode streak<br><span style="font-size:11px; color:var(--ink4);">both 2024 & 2025</span></div>
+            <div class="stat-big" style="font-size:28px; line-height:1.2;">OSS</div>
+            <div class="stat-desc">Open Source<br><span style="font-size:11px; color:var(--ink4);">Node.js filedrop fix</span></div>
           </div>
         </div>
         <div class="stat-item">
@@ -1043,7 +1001,10 @@ footer {
       From microservices with RabbitMQ to RAG pipelines with LangChain and Gemini — I build things that solve real problems cleanly.
     </p>
     <p class="about-text" style="position:relative;">
-      150-day LeetCode streaks in both 2024 and 2025. Not because I had to, but because I genuinely enjoy the puzzle.
+      Open source contributor — shipped bug fixes resolving a race condition in a Node.js file transfer tool (filedrop), covering async shutdown and stream lifecycle management.
+    </p>
+    <p class="about-text">
+      SIH 2025 participant: built an ML-based image recognition solution for automated breed identification of Indian cattle and buffaloes.
     </p>
 
     <!-- small sticky annotation -->
@@ -1075,7 +1036,17 @@ footer {
         <span class="skill-bubble round">FastAPI</span>
         <span class="skill-bubble round">Node.js</span>
         <span class="skill-bubble round">LangChain</span>
+        <span class="skill-bubble round">LangGraph</span>
         <span class="skill-bubble round">RabbitMQ</span>
+      </div>
+    </div>
+
+    <div class="skill-cluster" style="margin-top:16px;">
+      <div class="cluster-label">Databases</div>
+      <div class="skill-bubbles">
+        <span class="skill-bubble square">PostgreSQL</span>
+        <span class="skill-bubble square">MongoDB</span>
+        <span class="skill-bubble square">MySQL</span>
       </div>
     </div>
 
@@ -1084,10 +1055,21 @@ footer {
       <div class="skill-bubbles">
         <span class="skill-bubble square">AWS EC2</span>
         <span class="skill-bubble square">ECR</span>
+        <span class="skill-bubble square">SNS</span>
         <span class="skill-bubble square">Lambda</span>
+        <span class="skill-bubble square">SES</span>
         <span class="skill-bubble square">Docker</span>
         <span class="skill-bubble square">Nginx</span>
-        <span class="skill-bubble square">Supabase</span>
+      </div>
+    </div>
+
+    <div class="skill-cluster" style="margin-top:16px;">
+      <div class="cluster-label">Developer Tools</div>
+      <div class="skill-bubbles">
+        <span class="skill-bubble wobbly">Git</span>
+        <span class="skill-bubble wobbly">Postman</span>
+        <span class="skill-bubble wobbly">VS Code</span>
+        <span class="skill-bubble wobbly">Vite</span>
       </div>
     </div>
 
@@ -1139,15 +1121,13 @@ footer {
     <div>
       <div class="exp-role">Full Stack Developer Intern</div>
       <ul class="exp-bullets">
-        <li>Built a freelance services marketplace with job posting, candidate matching, and application tracking using Django REST Framework.</li>
-        <li>Implemented JWT-based authentication with role-based access control for three user types: candidate, recruiter, and admin.</li>
-        <li>Created a recruiter dashboard integrated with email notifications to manage applications and automate status updates.</li>
+        <li>Developed a skill-based matching feature in Django to connect freelancers with relevant job opportunities, improving hiring efficiency.</li>
+        <li>Built REST APIs using Django to handle authentication, job postings, and applications connecting the frontend with the database.</li>
       </ul>
       <div class="exp-tags">
         <span class="exp-tag">Python</span>
         <span class="exp-tag">Django REST</span>
         <span class="exp-tag">JWT</span>
-        <span class="exp-tag">SMTP</span>
         <span class="exp-tag">PostgreSQL</span>
       </div>
     </div>
@@ -1254,6 +1234,29 @@ footer {
       <a href="https://github.com/sharan-88" target="_blank" class="proj-link-hand" style="margin-top:14px; display:inline-flex;">View →</a>
     </div>
 
+    <!-- SDN Cloud Optimizer -->
+    <div class="proj-sketch-card reveal reveal-delay-2" style="transform:rotate(-0.6deg); grid-column: span 2;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+        <div>
+          <div class="proj-num-hand">06</div>
+          <div class="proj-name-hand">SDN Cloud Optimizer</div>
+          <div class="proj-tagline-hand">Nature-Inspired Scheduling · Python · Mininet · Ryu · OpenFlow</div>
+          <p class="proj-desc-hand">Adapted a nature-inspired optimization algorithm (AVRO) to intelligently select the best VM for cloud tasks based on CPU, memory, queue, and delay. Integrated with a simulated SDN network for real-time traffic routing.</p>
+          <a href="https://github.com/sharan-88" target="_blank" class="proj-link-hand" style="margin-top:14px; display:inline-flex;">View →</a>
+        </div>
+        <div>
+          <ul class="proj-bullets-hand" style="margin-top:28px;">
+            <li>Designed a fast-path shortcut so obvious scheduling decisions happen instantly, falling back to full optimization only when needed.</li>
+            <li>Exposed the scheduler as a REST API and integrated with simulated SDN network (Mininet + Ryu) for real-time traffic routing.</li>
+            <li>Benchmarked against standard scheduling methods (Round Robin, Least Loaded, FCFS) across multiple traffic patterns.</li>
+          </ul>
+          <div style="margin-top:16px; font-family:'Caveat',cursive; font-size:13px; color:var(--red-ink); opacity:0.75; transform:rotate(-1deg);">
+            ← nature-inspired = surprisingly effective 🧬
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1318,19 +1321,19 @@ footer {
 
   <div class="ach-grid">
     <div class="ach-card-sketch reveal">
-      <span class="ach-icon-hand">🔥</span>
-      <div class="ach-title-hand">150-Day LeetCode Streak</div>
-      <div class="ach-desc-hand">Maintained daily problem-solving in both 2024 and 2025. Consistency badge earned twice.</div>
+      <span class="ach-icon-hand">🌐</span>
+      <div class="ach-title-hand">Open Source Contributor</div>
+      <div class="ach-desc-hand">Resolved a race condition in Node.js file transfer tool (filedrop) — async shutdown, stream lifecycle management, and regression testing.</div>
     </div>
     <div class="ach-card-sketch reveal reveal-delay-1" style="transform:rotate(-0.8deg);">
-      <span class="ach-icon-hand">🐍</span>
-      <div class="ach-title-hand">Python — Infosys Springboard</div>
-      <div class="ach-desc-hand">Python Programming Certificate completed during the Infosys internship year.</div>
+      <span class="ach-icon-hand">🏆</span>
+      <div class="ach-title-hand">SIH 2025</div>
+      <div class="ach-desc-hand">Built an ML-based image recognition solution for automated breed identification of Indian cattle and buffaloes (Problem Statement SIH25004).</div>
     </div>
     <div class="ach-card-sketch reveal reveal-delay-2" style="transform:rotate(0.6deg);">
-      <span class="ach-icon-hand">📊</span>
-      <div class="ach-title-hand">Python Data Analysis</div>
-      <div class="ach-desc-hand">Certificate covering NumPy, Pandas, and data wrangling fundamentals.</div>
+      <span class="ach-icon-hand">🐍</span>
+      <div class="ach-title-hand">Python — Infosys Springboard</div>
+      <div class="ach-desc-hand">Python Programming Certificate + Data Analysis covering NumPy, Pandas, and data wrangling fundamentals.</div>
     </div>
   </div>
 </section>
